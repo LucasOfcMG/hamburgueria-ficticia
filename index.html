@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brasa Burger - Hambúrgueres artesanais feitos para você.">
+    <title>Brasa Burger | Hambúrguer Artesanal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --fundo: #111111;
+            --card: #1d1d1d;
+            --laranja: #ff7417;
+            --texto: #ffffff;
+            --cinza: #aaaaaa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #181818;
+            border-bottom: 1px solid #292929;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            color: var(--laranja);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--laranja);
+        }
+
+        .hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            background:
+                linear-gradient(90deg, #111 20%, #1119 70%),
+                url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero small {
+            color: var(--laranja);
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            margin: 18px 0;
+            line-height: 1.05;
+        }
+
+        .hero p {
+            color: #dddddd;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .botao {
+            display: inline-block;
+            background: var(--laranja);
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .botao:hover {
+            background: #e85d00;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            padding: 65px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .titulo small {
+            color: var(--laranja);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .titulo h2 {
+            font-size: 36px;
+            margin-top: 10px;
+        }
+
+        .categorias {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .categoria {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #444;
+            color: white;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .categoria.ativa,
+        .categoria:hover {
+            background: var(--laranja);
+            border-color: var(--laranja);
+        }
+
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .produto {
+            background: var(--card);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: .25s;
+        }
+
+        .produto:hover {
+            transform: translateY(-5px);
+        }
+
+        .produto img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .produto-info {
+            padding: 20px;
+        }
+
+        .produto h3 {
+            margin-bottom: 10px;
+        }
+
+        .produto p {
+            color: var(--cinza);
+            font-size: 13px;
+            line-height: 1.5;
+            min-height: 40px;
+        }
+
+        .produto-rodape {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 18px;
+        }
+
+        .preco {
+            color: var(--laranja);
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .adicionar {
+            background: var(--laranja);
+            color: white;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .carrinho {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: var(--laranja);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 16px 23px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px #0008;
+        }
+
+        footer {
+            text-align: center;
+            background: #181818;
+            padding: 30px;
+            color: var(--cinza);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 60px 25px;
+            }
+
+            .container {
+                padding: 50px 20px;
+            }
+
+            .titulo h2 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">BRASA BURGER.</div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <small>HAMBÚRGUER ARTESANAL</small>
+
+            <h1>O sabor que merece sua fome.</h1>
+
+            <p>
+                Ingredientes selecionados, carne suculenta
+                e muito sabor em cada mordida.
+                Conheça nosso cardápio!
+            </p>
+
+            <a href="#cardapio" class="botao">
+                VER CARDÁPIO
+            </a>
+        </div>
+    </section>
+
+    <main class="container" id="cardapio">
+
+        <div class="titulo">
+            <small>NOSSO CARDÁPIO</small>
+            <h2>Escolha seu favorito</h2>
+        </div>
+
+        <div class="categorias">
+            <button class="categoria ativa" data-categoria="todos">Todos</button>
+            <button class="categoria" data-categoria="classicos">Clássicos</button>
+            <button class="categoria" data-categoria="especiais">Especiais</button>
+        </div>
+
+        <div class="produtos">
+
+            <article class="produto" data-categoria="classicos">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"
+                     alt="Hambúrguer clássico">
+
+                <div class="produto-info">
+                    <h3>Brasa Clássico</h3>
+                    <p>Pão brioche, carne artesanal, queijo e molho especial.</p>
+
+                    <div class="produto-rodape">
+                        <span class="preco">R$ 24,90</span>
+                        <button class="adicionar" data-nome="Brasa Clássico" data-preco="24.90">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="produto" data-categoria="especiais">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"
+                     alt="Hambúrguer especial">
+
+                <div class="produto-info">
+                    <h3>Brasa Bacon</h3>
+                    <p>Carne artesanal, cheddar cremoso e bacon crocante.</p>
+
+                    <div class="produto-rodape">
+                        <span class="preco">R$ 29,90</span>
+                        <button class="adicionar" data-nome="Brasa Bacon" data-preco="29.90">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="produto" data-categoria="especiais">
+                <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600"
+                     alt="Hambúrguer duplo">
+
+                <div class="produto-info">
+                    <h3>Brasa Duplo</h3>
+                    <p>Dois hambúrgueres, queijo duplo e molho da casa.</p>
+
+                    <div class="produto-rodape">
+                        <span class="preco">R$ 34,90</span>
+                        <button class="adicionar" data-nome="Brasa Duplo" data-preco="34.90">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="produto" data-categoria="classicos">
+                <img src="https://images.unsplash.com/photo-157 burger?w=600"
+                     alt="Hambúrguer artesanal"
+                     onerror="this.src='https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600'">
+
+                <div class="produto-info">
+                    <h3>Brasa Salad</h3>
+                    <p>Carne artesanal, alface, tomate e queijo.</p>
+
+                    <div class="produto-rodape">
+                        <span class="preco">R$ 26,90</span>
+                        <button class="adicionar" data-nome="Brasa Salad" data-preco="26.90">+</button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer id="contato">
+        <p>BRASA BURGER © 2026 - Todos os direitos reservados.</p>
+        <p>Feito para quem ama hambúrguer de verdade.</p>
+    </footer>
+
+    <button class="carrinho" id="abrirCarrinho">
+        🛒 Carrinho (<span id="quantidade">0</span>)
+    </button>
+
+    <script>
+        const botoesAdicionar = document.querySelectorAll(".adicionar");
+        const quantidade = document.getElementById("quantidade");
+        const abrirCarrinho = document.getElementById("abrirCarrinho");
+        const categorias = document.querySelectorAll(".categoria");
+        const produtos = document.querySelectorAll(".produto");
+
+        let carrinho = [];
+
+        function atualizarCarrinho() {
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+            quantidade.textContent = totalItens;
+        }
+
+        botoesAdicionar.forEach(botao => {
+            botao.addEventListener("click", () => {
+                const nome = botao.dataset.nome;
+                const preco = Number(botao.dataset.preco);
+
+                const existente = carrinho.find(item => item.nome === nome);
+
+                if (existente) {
+                    existente.quantidade++;
+                } else {
+                    carrinho.push({
+                        nome: nome,
+                        preco: preco,
+                        quantidade: 1
+                    });
+                }
+
+                atualizarCarrinho();
+            });
+        });
+
+        abrirCarrinho.addEventListener("click", () => {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            let mensagem = "MEU PEDIDO - BRASA BURGER\n\n";
+            let total = 0;
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                mensagem += `${item.quantidade}x ${item.nome} - R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
+            });
+
+            mensagem += `\nTOTAL: R$ ${total.toFixed(2).replace(".", ",")}`;
+            mensagem += "\n\nEntre em contato para finalizar seu pedido.";
+
+            alert(mensagem);
+        });
+
+        categorias.forEach(botao => {
+            botao.addEventListener("click", () => {
+                categorias.forEach(item => item.classList.remove("ativa"));
+                botao.classList.add("ativa");
+
+                const categoria = botao.dataset.categoria;
+
+                produtos.forEach(produto => {
+                    const mostrar =
+                        categoria === "todos" ||
+                        produto.dataset.categoria === categoria;
+
+                    produto.style.display = mostrar ? "block" : "none";
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

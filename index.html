@@ -37,16 +37,20 @@
             border-bottom: 1px solid #292929;
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            color: var(--laranja);
-        }
+       .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--laranja);
+}
 
-        nav {
-            display: flex;
-            gap: 25px;
-        }
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
 
         nav a {
             color: white;
@@ -268,7 +272,10 @@
 <body>
 
     <header>
-        <div class="logo">BRASA BURGER.</div>
+        <div class="logo">
+    <img src="logo.png.jpg" alt="Logo Brasa Burger">
+    BRASA BURGER.
+</div>
 
         <nav>
             <a href="#inicio">Início</a>
@@ -326,7 +333,8 @@
             </article>
 
             <article class="produto" data-categoria="especiais">
-                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"
+     alt="Hambúrguer Brasa Bacon"
                      alt="Hambúrguer especial">
 
                 <div class="produto-info">
